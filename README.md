@@ -12,7 +12,7 @@ Clone the repository:
 
 Navigate to the project directory:
 
-`cd weatherapp`
+`cd weather-app`
 
 In the project directory, you can run:
 
