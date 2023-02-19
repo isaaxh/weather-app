@@ -25,4 +25,4 @@ You may also see any lint errors in the console.
 ## Screenshots
 
 ![Desktop screenshot](./src/imgs/screeenshot1.png)
-![Mobile screenshot](./src/imgs/screeenshot2.png)
+![Mobile screenshot](./src/imgs/screenshot2.png)
