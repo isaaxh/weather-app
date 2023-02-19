@@ -15,7 +15,7 @@ export default function App() {
         `https://api.openweathermap.org/data/2.5/weather?appid=16c681b8bf60bf14a8a6bdc1f00fc6c9&q=${city}&units=metric`
       );
       if (!response.ok) {
-        setError("Location not found");
+        setError("Location not found...");
         setWeatherData(null);
         setIsLoading(false);
         return;
@@ -50,7 +50,7 @@ export default function App() {
       <div>
         <div className='input'>
           <InputForm handleSearch={handleSearch} />
-          <p className='error'>{error && error}...</p>
+          <p className='error'>{error && error}</p>
         </div>
       </div>
       <div>
