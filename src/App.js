@@ -12,7 +12,7 @@ export default function App() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?appid=16c681b8bf60bf14a8a6bdc1f00fc6c9&q=${city}`
+        `https://api.openweathermap.org/data/2.5/weather?appid=16c681b8bf60bf14a8a6bdc1f00fc6c9&q=${city}&units=metric`
       );
       if (!response.ok) {
         setError("Location not found");
@@ -28,8 +28,15 @@ export default function App() {
       setIsLoading(false);
     };
 
-    setIsLoading(true);
-    fetchWeatherData();
+    try {
+      setIsLoading(true);
+      fetchWeatherData();
+    } catch (error) {
+      setError("Location not found");
+      setWeatherData(null);
+      setIsLoading(false);
+      return;
+    }
   }, [city]);
 
   const handleSearch = (inputValue) => {
@@ -39,15 +46,12 @@ export default function App() {
 
   return (
     <div className='App'>
-      <h1>Weather App</h1>
+      <h1 className='title'>Weather App</h1>
       <div>
         <div className='input'>
-          <p>{error && error}</p>
           <InputForm handleSearch={handleSearch} />
+          <p className='error'>{error && error}...</p>
         </div>
-        {/* <button onClick={() => setCity("london")}>London</button>
-        <button onClick={() => setCity("mecca")}>Mecca</button>
-        <button onClick={() => setCity("istanbul")}>Istanbul</button> */}
       </div>
       <div>
         <Display weatherData={weatherData} isLoading={isLoading} />

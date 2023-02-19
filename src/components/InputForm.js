@@ -1,11 +1,17 @@
 import React, { useRef } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 
 function InputForm({ handleSearch }) {
   const inputValue = useRef(null);
   return (
-    <div>
-      <input type='text' ref={inputValue} />
-      <button onClick={() => handleSearch(inputValue)}>Search</button>
+    <div className='input-container'>
+      <label>
+        <input type='text' ref={inputValue} placeholder='Search City...' />
+
+        <button onClick={() => handleSearch(inputValue)}>
+          <SearchIcon />
+        </button>
+      </label>
     </div>
   );
 }

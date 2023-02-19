@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color:inherit;
 }
 
 .App {
@@ -10,25 +11,95 @@
   padding:3rem;
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   color: whitesmoke;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(./imgs/manhattan-bridge-night.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+
+  transition: opacity 300ms ease-in-out, 1s;
 }
 
-.App h1 {
+.title {
+  padding-bottom: 30px;
 }
 
 
-input {
-  width: 250px;
-  height: 30px;
-  margin-bottom: 15px;
+.input-container input {
+  color: white;
+  min-width: 100px;
+  height: 25px;
+  padding: 0px 6px ;
+  border: none;
+  background: transparent;
+  
 }
 
-.input {
+.input-container input:focus {
+  outline: none;
+}
+
+.input-container input:focus + label {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.input-container button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.input-container label {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  max-width: 150px;
+  border: none;
+  border-bottom: 1px solid #a09b9b;
+  color:  #a09b9b;
+}
+
+.error {
+  color: rgb(222, 36, 36);
+  font-size: 0.65rem;
+  margin-top: 10px;
+}
+
+
+.display {
+  display: grid;
+  place-content: center;
+  margin-top: 50px;
+  min-width: 200px;
+  min-height: 200px;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.display * {
+  margin-bottom: 5px;
+}
+
+.weather-content>h1 {
+  margin-bottom: 12px;
+  font-size: 4em;
+} 
+.weather-content>h1+h2 {
   margin-bottom: 15px;
 }
+
+.weather-info {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  overflow: wrap;
+}
+
+.weather-info p {
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+
+

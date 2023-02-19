@@ -1,26 +1,43 @@
 import React from "react";
+import DeviceThermostatOutlinedIcon from "@mui/icons-material/DeviceThermostatOutlined";
+import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
+import AirOutlinedIcon from "@mui/icons-material/AirOutlined";
 
 function Display({ weatherData, isLoading }) {
   return (
-    <div>
-      <div className='Location'></div>
-      <h2>
-        {isLoading ? "Loading..." : weatherData && weatherData.weather[0].main}
-      </h2>
-      <h2>
-        {isLoading ? "Loading..." : weatherData && weatherData.name},
-        {isLoading ? "Loading..." : weatherData && weatherData.sys.country}
-      </h2>
-      <h1>{isLoading ? "Loading..." : weatherData && weatherData.main.temp}</h1>
-      <p>
-        {isLoading ? "Loading..." : weatherData && weatherData.main.feels_like}
-      </p>
-      <p>
-        {isLoading ? "Loading..." : weatherData && weatherData.main.humidity}
-      </p>
-      <p>
-        {isLoading ? "Loading..." : weatherData && weatherData.main.pressure}
-      </p>
+    <div className='display'>
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <div className='weather-content'>
+          <h1>
+            {weatherData && Math.ceil(weatherData.main.temp)}
+            &deg;C
+          </h1>
+          <h2>
+            {weatherData && weatherData.name}, &nbsp;
+            {weatherData && weatherData.sys.country}
+          </h2>
+          <div className='weather-info'>
+            <p>
+              <DeviceThermostatOutlinedIcon /> &nbsp;
+              {weatherData && Math.ceil(weatherData.main.feels_like)}
+              &deg;C
+            </p>
+            <p>
+              <OpacityOutlinedIcon />
+              &nbsp;
+              {weatherData && weatherData.main.humidity}%
+            </p>
+            <p>
+              <AirOutlinedIcon />
+              &nbsp;
+              {weatherData && weatherData.wind.speed}
+              kph
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
